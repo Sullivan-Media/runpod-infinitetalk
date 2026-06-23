@@ -1,0 +1,21 @@
+{
+  "tests": [
+    {
+      "name": "i2v_single_smoke",
+      "input": {
+        "input_type": "image",
+        "person_count": "single",
+        "prompt": "A person talking naturally to the camera",
+        "width": 512,
+        "height": 512,
+        "max_frame": 45
+      },
+      "timeout": 600000
+    }
+  ],
+  "config": {
+    "gpuTypeId": "NVIDIA GeForce RTX 4090",
+    "gpuCount": 1,
+    "allowedCudaVersions": ["12.8"]
+  }
+}
