@@ -1,0 +1,561 @@
+{
+  "122": {
+    "inputs": {
+      "model": "Wan21-SkyReelsV3-A2V_fp8_scaled_mixed.safetensors",
+      "base_precision": "fp16_fast",
+      "quantization": "disabled",
+      "load_device": "offload_device",
+      "attention_mode": "sageattn",
+      "rms_norm_function": "default"
+    },
+    "class_type": "WanVideoModelLoader",
+    "_meta": {
+      "title": "WanVideo Model Loader"
+    }
+  },
+  "125": {
+    "inputs": {
+      "audio": "woman_speech.mp3",
+      "audioUI": "/api/view?filename=woman_speech.mp3&type=input&subfolder=&rand=0.37629380677720814"
+    },
+    "class_type": "LoadAudio",
+    "_meta": {
+      "title": "오디오 로드"
+    }
+  },
+  "129": {
+    "inputs": {
+      "model_name": "Wan2_1_VAE_bf16.safetensors",
+      "precision": "bf16",
+      "use_cpu_cache": false,
+      "verbose": false
+    },
+    "class_type": "WanVideoVAELoader",
+    "_meta": {
+      "title": "WanVideo VAE Loader"
+    }
+  },
+  "131": {
+    "inputs": {
+      "frame_rate": 25,
+      "loop_count": 0,
+      "filename_prefix": "WanVideo2_1_SkyReelsV3_A2V",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "309",
+        0
+      ],
+      "audio": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "134": {
+    "inputs": {
+      "blocks_to_swap": 30,
+      "offload_img_emb": false,
+      "offload_txt_emb": false,
+      "use_non_blocking": true,
+      "vace_blocks_to_swap": 0,
+      "prefetch_blocks": 1,
+      "block_swap_debug": false
+    },
+    "class_type": "WanVideoBlockSwap",
+    "_meta": {
+      "title": "WanVideo Block Swap"
+    }
+  },
+  "137": {
+    "inputs": {
+      "model": "TencentGameMate/chinese-wav2vec2-base",
+      "base_precision": "fp16",
+      "load_device": "main_device"
+    },
+    "class_type": "DownloadAndLoadWav2VecModel",
+    "_meta": {
+      "title": "(Down)load Wav2Vec Model"
+    }
+  },
+  "177": {
+    "inputs": {
+      "backend": "inductor",
+      "fullgraph": false,
+      "mode": "default",
+      "dynamic": false,
+      "dynamo_cache_size_limit": 64,
+      "compile_transformer_blocks_only": true,
+      "dynamo_recompile_limit": 128,
+      "force_parameter_static_shapes": false,
+      "allow_unmerged_lora_compile": false
+    },
+    "class_type": "WanVideoTorchCompileSettings",
+    "_meta": {
+      "title": "WanVideo Torch Compile Settings"
+    }
+  },
+  "194": {
+    "inputs": {
+      "normalize_loudness": true,
+      "num_frames": [
+        "270",
+        0
+      ],
+      "fps": 25,
+      "audio_scale": 1,
+      "audio_cfg_scale": 1,
+      "multi_audio_type": "para",
+      "add_noise_floor": false,
+      "smooth_transients": false,
+      "wav2vec_model": [
+        "137",
+        0
+      ],
+      "audio_1": [
+        "302",
+        0
+      ]
+    },
+    "class_type": "MultiTalkWav2VecEmbeds",
+    "_meta": {
+      "title": "Multi/InfiniteTalk Wav2vec2 Embeds"
+    }
+  },
+  "237": {
+    "inputs": {
+      "strength_1": 1,
+      "strength_2": 1,
+      "crop": "center",
+      "combine_embeds": "average",
+      "force_offload": true,
+      "tiles": 0,
+      "ratio": 0.5,
+      "clip_vision": [
+        "238",
+        0
+      ],
+      "image_1": [
+        "281",
+        0
+      ]
+    },
+    "class_type": "WanVideoClipVisionEncode",
+    "_meta": {
+      "title": "WanVideo ClipVision Encode"
+    }
+  },
+  "238": {
+    "inputs": {
+      "clip_name": "clip_vision_h.safetensors"
+    },
+    "class_type": "CLIPVisionLoader",
+    "_meta": {
+      "title": "CLIP_VISION 로드"
+    }
+  },
+  "241": {
+    "inputs": {
+      "model_name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
+      "precision": "bf16",
+      "positive_prompt": "A woman is giving a speech. She is confident, poised, and joyful. Use a static shot.",
+      "negative_prompt": "bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards",
+      "quantization": "disabled",
+      "use_disk_cache": true,
+      "device": "gpu"
+    },
+    "class_type": "WanVideoTextEncodeCached",
+    "_meta": {
+      "title": "WanVideo TextEncode Cached"
+    }
+  },
+  "245": {
+    "inputs": {
+      "value": 1088
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Width"
+    }
+  },
+  "246": {
+    "inputs": {
+      "value": 832
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Height"
+    }
+  },
+  "270": {
+    "inputs": {
+      "value": 500
+    },
+    "class_type": "INTConstant",
+    "_meta": {
+      "title": "Max frames"
+    }
+  },
+  "281": {
+    "inputs": {
+      "width": [
+        "245",
+        0
+      ],
+      "height": [
+        "246",
+        0
+      ],
+      "upscale_method": "lanczos",
+      "keep_proportion": "crop",
+      "pad_color": "0, 0, 0",
+      "crop_position": "top",
+      "divisible_by": 16,
+      "device": "cpu",
+      "image": [
+        "284",
+        0
+      ]
+    },
+    "class_type": "ImageResizeKJv2",
+    "_meta": {
+      "title": "Resize Image v2"
+    }
+  },
+  "284": {
+    "inputs": {
+      "image": "woman.jpg"
+    },
+    "class_type": "LoadImage",
+    "_meta": {
+      "title": "이미지 로드"
+    }
+  },
+  "293": {
+    "inputs": {
+      "preview": "",
+      "previewMode": null,
+      "source": [
+        "194",
+        2
+      ]
+    },
+    "class_type": "PreviewAny",
+    "_meta": {
+      "title": "미리보기 아무거나"
+    }
+  },
+  "300": {
+    "inputs": {
+      "model": "wav2vec2-chinese-base_fp16.safetensors",
+      "base_precision": "fp16",
+      "load_device": "main_device"
+    },
+    "class_type": "Wav2VecModelLoader",
+    "_meta": {
+      "title": "Wav2vec2 Model Loader"
+    }
+  },
+  "301": {
+    "inputs": {
+      "model_name": "MelBandRoformer_fp16.safetensors"
+    },
+    "class_type": "MelBandRoFormerModelLoader",
+    "_meta": {
+      "title": "Mel-Band RoFormer Model Loader"
+    }
+  },
+  "302": {
+    "inputs": {
+      "model": [
+        "301",
+        0
+      ],
+      "audio": [
+        "125",
+        0
+      ]
+    },
+    "class_type": "MelBandRoFormerSampler",
+    "_meta": {
+      "title": "Mel-Band RoFormer Sampler"
+    }
+  },
+  "309": {
+    "inputs": {
+      "samples": [
+        "317",
+        0
+      ]
+    },
+    "class_type": "WanVideoPassImagesFromSamples",
+    "_meta": {
+      "title": "WanVideo Pass Images From Samples"
+    }
+  },
+  "314": {
+    "inputs": {
+      "width": [
+        "281",
+        1
+      ],
+      "height": [
+        "281",
+        2
+      ],
+      "frame_window_size": 81,
+      "motion_frame": 5,
+      "drop_frames": 12,
+      "tiled_vae": false,
+      "force_offload": true,
+      "colormatch": "reinhard_torch",
+      "output_path": "",
+      "vae": [
+        "129",
+        0
+      ],
+      "start_image": [
+        "281",
+        0
+      ],
+      "reference_video": [
+        "321",
+        0
+      ],
+      "clip_embeds": [
+        "237",
+        0
+      ]
+    },
+    "class_type": "WanVideoImageToVideoSkyreelsv3_audio",
+    "_meta": {
+      "title": "WanVideo Long SkyReelsV3 A2V"
+    }
+  },
+  "317": {
+    "inputs": {
+      "cfg": 1,
+      "seed": 42,
+      "force_offload": true,
+      "add_noise_to_samples": false,
+      "model": [
+        "342",
+        0
+      ],
+      "image_embeds": [
+        "314",
+        0
+      ],
+      "scheduler": [
+        "318",
+        0
+      ],
+      "text_embeds": [
+        "323",
+        0
+      ],
+      "extra_args": [
+        "319",
+        0
+      ]
+    },
+    "class_type": "WanVideoSamplerv2",
+    "_meta": {
+      "title": "WanVideo Sampler v2"
+    }
+  },
+  "318": {
+    "inputs": {
+      "scheduler": "flowmatch_distill",
+      "steps": 4,
+      "shift": 5,
+      "start_step": 0,
+      "end_step": -1,
+      "enhance_hf": false
+    },
+    "class_type": "WanVideoSchedulerv2",
+    "_meta": {
+      "title": "WanVideo Scheduler v2"
+    }
+  },
+  "319": {
+    "inputs": {
+      "riflex_freq_index": 0,
+      "rope_function": "comfy",
+      "multitalk_embeds": [
+        "194",
+        0
+      ]
+    },
+    "class_type": "WanVideoSamplerExtraArgs",
+    "_meta": {
+      "title": "WanVideoSampler v2 Extra Args"
+    }
+  },
+  "320": {
+    "inputs": {
+      "cfg": 1,
+      "seed": 42,
+      "force_offload": true,
+      "add_noise_to_samples": false,
+      "model": [
+        "342",
+        0
+      ],
+      "image_embeds": [
+        "326",
+        0
+      ],
+      "scheduler": [
+        "318",
+        0
+      ],
+      "text_embeds": [
+        "241",
+        0
+      ],
+      "extra_args": [
+        "345",
+        0
+      ]
+    },
+    "class_type": "WanVideoSamplerv2",
+    "_meta": {
+      "title": "WanVideo Sampler v2"
+    }
+  },
+  "321": {
+    "inputs": {
+      "enable_vae_tiling": false,
+      "tile_x": 272,
+      "tile_y": 272,
+      "tile_stride_x": 144,
+      "tile_stride_y": 128,
+      "normalization": "default",
+      "vae": [
+        "129",
+        0
+      ],
+      "samples": [
+        "320",
+        0
+      ]
+    },
+    "class_type": "WanVideoDecode",
+    "_meta": {
+      "title": "WanVideo Decode"
+    }
+  },
+  "323": {
+    "inputs": {
+      "model_name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
+      "precision": "bf16",
+      "positive_prompt": "a person is talking",
+      "negative_prompt": "bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards",
+      "quantization": "disabled",
+      "use_disk_cache": true,
+      "device": "gpu"
+    },
+    "class_type": "WanVideoTextEncodeCached",
+    "_meta": {
+      "title": "WanVideo TextEncode Cached"
+    }
+  },
+  "326": {
+    "inputs": {
+      "width": [
+        "281",
+        1
+      ],
+      "height": [
+        "281",
+        2
+      ],
+      "num_frames": 81,
+      "noise_aug_strength": 0,
+      "start_latent_strength": 1,
+      "end_latent_strength": 1,
+      "force_offload": true,
+      "fun_or_fl2v_model": true,
+      "tiled_vae": false,
+      "augment_empty_frames": 0,
+      "vae": [
+        "129",
+        0
+      ],
+      "clip_embeds": [
+        "237",
+        0
+      ],
+      "start_image": [
+        "281",
+        0
+      ]
+    },
+    "class_type": "WanVideoImageToVideoEncode",
+    "_meta": {
+      "title": "WanVideo ImageToVideo Encode"
+    }
+  },
+  "328": {
+    "inputs": {
+      "frame_rate": 25,
+      "loop_count": 0,
+      "filename_prefix": "WanVideo2_1_SkyReelsV3_A2V",
+      "format": "video/h264-mp4",
+      "pix_fmt": "yuv420p",
+      "crf": 19,
+      "save_metadata": true,
+      "trim_to_audio": false,
+      "pingpong": false,
+      "save_output": false,
+      "images": [
+        "321",
+        0
+      ]
+    },
+    "class_type": "VHS_VideoCombine",
+    "_meta": {
+      "title": "Video Combine 🎥🅥🅗🅢"
+    }
+  },
+  "342": {
+    "inputs": {
+      "model": [
+        "122",
+        0
+      ],
+      "block_swap_args": [
+        "134",
+        0
+      ]
+    },
+    "class_type": "WanVideoSetBlockSwap",
+    "_meta": {
+      "title": "WanVideo Set BlockSwap"
+    }
+  },
+  "345": {
+    "inputs": {
+      "riflex_freq_index": 0,
+      "rope_function": "comfy",
+      "multitalk_embeds": [
+        "194",
+        0
+      ]
+    },
+    "class_type": "WanVideoSamplerExtraArgs",
+    "_meta": {
+      "title": "WanVideoSampler v2 Extra Args"
+    }
+  }
+}
