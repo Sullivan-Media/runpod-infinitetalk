@@ -167,7 +167,7 @@
     "inputs": {
       "model_name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
       "precision": "bf16",
-      "positive_prompt": "A woman is giving a speech. She is confident, poised, and joyful. Use a static shot.",
+      "positive_prompt": "The same seated man speaks calmly and directly to the camera, maintaining a composed and relaxed posture throughout. He remains seated and still, with no hand gestures or noticeable body movement, relying only on natural speech, subtle facial expressions, and occasional eye movement to convey emotion. The shot is a static medium framing from the chest up. Do not describe, generate, or invent any room or background, as the indoor background is supplied separately and added in code. Focus exclusively on the man's appearance and his natural on-camera speaking performance.",
       "negative_prompt": "bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards",
       "quantization": "disabled",
       "use_disk_cache": true,
@@ -459,7 +459,7 @@
     "inputs": {
       "model_name": "umt5-xxl-enc-fp8_e4m3fn.safetensors",
       "precision": "bf16",
-      "positive_prompt": "a person is talking",
+      "positive_prompt": "The same seated man speaks calmly and directly to the camera, maintaining a composed and relaxed posture throughout. He remains seated and still, with no hand gestures or noticeable body movement, relying only on natural speech, subtle facial expressions, and occasional eye movement to convey emotion. The shot is a static medium framing from the chest up. Do not describe, generate, or invent any room or background, as the indoor background is supplied separately and added in code. Focus exclusively on the man's appearance and his natural on-camera speaking performance.",
       "negative_prompt": "bright tones, overexposed, static, blurred details, subtitles, style, works, paintings, images, static, overall gray, worst quality, low quality, JPEG compression residue, ugly, incomplete, extra fingers, poorly drawn hands, poorly drawn faces, deformed, disfigured, misshapen limbs, fused fingers, still picture, messy background, three legs, many people in the background, walking backwards",
       "quantization": "disabled",
       "use_disk_cache": true,
