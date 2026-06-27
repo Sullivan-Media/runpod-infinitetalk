@@ -87,7 +87,7 @@ The `input` object must contain the following fields. Images, videos, and audio 
 | `width` | `integer` | No | `512` | Width of the output video in pixels |
 | `height` | `integer` | No | `512` | Height of the output video in pixels |
 | `max_frame` | `integer` | No | Auto-calculated | Maximum number of frames for the output video (automatically calculated based on audio duration if not provided) |
-| `force_offload` | `boolean` | No | `true` | Whether to offload model components to CPU during inference. Set to `false` for ~1.5x faster processing on high-VRAM GPUs (24GB+). Default `true` prevents OOM on smaller GPUs. |
+| `force_offload` | `boolean` | No | `false` | Whether to offload model components to CPU during inference. Default `false` keeps weights resident for faster processing on the 32GB target GPU. Set to `true` to prevent OOM on smaller GPUs. |
 | `network_volume` | `boolean` | No | `false` | Whether to use network volume for output storage. If `true`, returns file path instead of Base64 data |
 
 **Request Examples:**
