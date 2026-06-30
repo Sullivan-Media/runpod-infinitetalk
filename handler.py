@@ -333,7 +333,7 @@ def handler(job):
     # ------------------------------------------------------------------
     # 동적 Force Offload 설정
     # ------------------------------------------------------------------
-    # 1. 입력에서 force_offload 읽기 (기본값 False: 32GB GPU에서 속도 우선, 작은 GPU는 true로 override)
+    # 1. 입력에서 force_offload 읽기 (기본값 False: 고VRAM GPU에서 속도 우선, 작은 GPU는 true로 override)
     force_offload = job_input.get("force_offload", False)
     logger.info(f"🔧 설정: force_offload={force_offload}")
 
